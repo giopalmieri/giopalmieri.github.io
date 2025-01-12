@@ -1,8 +1,8 @@
 # site settings
 title: Portfolio
 subtitle: by Giovanni Palmieri
-email: giovcanni.b.palmieri@gmail.com
-description: None
+email: giovanni.b.palmieri@gmail.com
+description: descrição config
 baseurl: "" # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author: Giovanni Bottini Palmieri
