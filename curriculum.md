@@ -9,7 +9,7 @@ nav-menu: true
 <!-- One --> <section id="one"> <div class="inner"> <header class="major"> <h1>My Journey</h1> </header>
 
 <!-- Content --> <h2 id="content">Hi, I'm Giovanni Palmieri!</h2>
-<img src="assets/images/me.png" style="opacity:0.7;width:10%;border-radius:30px" alt="Myself">
+<img src="assets/images/me.png" style="opacity:0.7;max-width:20%;border-radius:30px" alt="Myself">
 
 <p>Feel free to reach out: giovanni.b.palmieri@gmail.com, +55 11 97116-1502</p>
 
