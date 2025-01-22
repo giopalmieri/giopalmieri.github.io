@@ -9,7 +9,23 @@ nav-menu: true
 <!-- One --> <section id="one"> <div class="inner"> <header class="major"> <h1>My Journey</h1> </header>
 
 <!-- Content --> <h2 id="content">Hi, I'm Giovanni Palmieri!</h2>
-<img src="assets/images/me.png" style="opacity:0.7;max-width:20%;border-radius:30px" alt="Myself">
+
+<style>
+    .responsive-image {
+        opacity: 0.95;
+        border-radius: 15px;
+        width: 30%;
+        max-width: 300px; /* Maximum width for PC */
+    }
+
+    @media (max-width: 768px) {
+        .responsive-image {
+            width: 60%; /* Full width on mobile */
+        }
+    }
+</style>
+
+<img src="assets/images/me.png" class='responsive-image' alt="Myself">
 
 <p>Feel free to reach out: giovanni.b.palmieri@gmail.com, +55 11 97116-1502</p>
 
