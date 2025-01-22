@@ -12,15 +12,19 @@ nav-menu: true
 
 <style>
     .responsive-image {
-        opacity: 0.95;
-        border-radius: 15px;
-        width: 30%;
-        max-width: 300px; /* Maximum width for PC */
+        opacity: 0.7;
+        border-radius: 50%;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+
+        width: 20%;
+        max-width: 200px; /* Maximum width for PC */
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 568px) {
         .responsive-image {
-            width: 60%; /* Full width on mobile */
+            width: 40%; /* Full width on mobile */
         }
     }
 </style>
