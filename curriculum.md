@@ -30,23 +30,38 @@ nav-menu: true
 </style>
 
 <img src="assets/images/me.png" class='responsive-image' alt="Myself">
+<br>
+<p>Feel free to reach out:</p>
+<ul>
+    <li><b>Mail:</b> giovanni.b.palmieri@gmail.com</li>
+    <li><b>Phone:</b> +55 (11) 97116-1502</li>
+</ul>
 
-<p>Feel free to reach out: giovanni.b.palmieri@gmail.com, +55 11 97116-1502</p>
-
-<h2 id="personal-information">A Little About Me</h2> <ul> <li>Citizenship: Brazilian and Italian</li> <li>Family: Happily married with 2 wonderful kids</li> <li>Languages: Fluent in Portuguese, English Advanced, Spanish (Intermediary)</li> 
+<h2 id="personal-information">A Little About Me</h2> 
+<ul> 
+<li>Citizenship: Brazilian and Italian</li> 
+    <li>Family: Happily married with 2 wonderful kids</li> 
+    <li>Languages:
+        <ul>
+            <li> Fluent in Portuguese</li> 
+            <li>English Advanced</li> 
+            <li>Spanish (Intermediary)</li>
+        </ul>
+    </li> 
+</ul>
 <br>
 <p>With over <b>9 years</b> in data analytics, I love to transform complex data into actionable insights. </p>
 <p>
 My toolkit includes <b>data analytics, visualization, and machine learning</b> with tools like <b>Python, SQL, Tableau all in AWS Cloud</b>. I’m adept at managing end-to-end analytics processes from data extraction to model deployment, always aligning solutions with business goals. I'm a pro at Agile methodologies, driving efficiency, adaptability, and continuous improvement in all data-driven projects.</p>
-</ul>
+
 
 <h2 id="skills">What I Bring to the Table</h2> <ul> <li>Programming Languages: Python, SQL, Java, C++ and a little bit of everything else (javascript,typescript,html)</li> <li>Cloud Expertise: AWS,Google Cloud</li> <li>Data Visualization: Tableau, Excel, PowerBI, Quicksight</li> <li>Work Methodology: Agile practices</li> </ul>
 
 
 
-<h2 id="experience">Where I've Been</h2> <h3>Data Manager at Itaú Unibanco (Brazil)</h3> <p>(4 years)March 2021 – Present</p> <ul> <li>Leading a talented data team to achieve ambitious goals.</li> <li>Developing and deploying cutting-edge machine learning models.</li> <li>Designing and maintaining insightful data dashboards.</li> <li>Conducting thorough analytical studies to uncover trends.</li> <li>Optimizing processes to enhance business value.</li> <li>Communicating insights effectively to executives.</li> <li>Utilizing tools like Python and SQL to drive results.</li> </ul>
+<h2 id="experience">Where I've Been</h2> <h3>Data Manager at Itaú Unibanco (Brazil)</h3> <p><b>(4 years)</b> March 2021 – Present</p> <ul> <li>Leading a talented data team to achieve ambitious goals.</li> <li>Developing and deploying cutting-edge machine learning models.</li> <li>Designing and maintaining insightful data dashboards.</li> <li>Conducting thorough analytical studies to uncover trends.</li> <li>Optimizing processes to enhance business value.</li> <li>Communicating insights effectively to executives.</li> <li>Utilizing tools like Python and SQL to drive results.</li> </ul>
 
-<h3>Data Analyst at Itaú Unibanco (Brazil)</h3> <p>(5 years)September 2016 – March 2021</p> <ul> <li>Conducting in-depth data analysis to support business decisions.</li> <li>Automating data processes for improved efficiency.</li> <li>Creating and refining interactive dashboards.</li> <li>Generating detailed reports to facilitate decision-making.</li> <li>Identifying key insights to drive actionable outcomes.</li> </ul>
+<h3>Data Analyst at Itaú Unibanco (Brazil)</h3> <p><b>(5 years)</b> September 2016 – March 2021</p> <ul> <li>Conducting in-depth data analysis to support business decisions.</li> <li>Automating data processes for improved efficiency.</li> <li>Creating and refining interactive dashboards.</li> <li>Generating detailed reports to facilitate decision-making.</li> <li>Identifying key insights to drive actionable outcomes.</li> </ul>
 
 <h2 id="education">My Educational Background</h2> <h3>MBA in Business Management</h3> <p>Fundação Getúlio Vargas (FGV) - Brazil, 2021 – 2023</p> <p>Specializing in leadership, strategic planning, and organizational management.</p>
 
