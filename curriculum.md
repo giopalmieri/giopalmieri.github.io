@@ -1,9 +1,23 @@
 ---
-layout: page
+layout: page    
 title: Curriculum/Timeline
 image: assets/images/pic01.jpg
 nav-menu: true
 ---
+
+<style>
+    body {
+        font-size: 40px;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            font-size: 44px; /* Aumenta o tamanho da fonte em dispositivos menores */
+        }
+    }
+</style>
+
+
 <!-- Main --> <div id="main" class="alt">
 
 <!-- One --> <section id="one"> <div class="inner"> <header class="major"> <h1>My Journey</h1> </header>
@@ -19,7 +33,7 @@ nav-menu: true
         margin-right:auto;
 
         width: 20%;
-        max-width: 200px; /* Maximum width for PC */
+        max-width: 400px; /* Maximum width for PC */
     }
 
     @media (max-width: 568px) {
@@ -45,7 +59,7 @@ nav-menu: true
         <ul>
             <li> Fluent in Portuguese</li> 
             <li>English Advanced</li> 
-            <li>Spanish (Intermediary)</li>
+            <li>Spanish Intermediary</li>
         </ul>
     </li> 
 </ul>

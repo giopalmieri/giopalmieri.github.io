@@ -1,9 +1,10 @@
 ---
 layout: post
-title: dataviz
+title: Data Visualization
 description: Project dataviz
-image: assets/images/pic11.jpg
-nav-menu: true
+image: assets/images/dataviz01.png
+nav-menu: false
+show_tile: false
 ---
 
 Disclaimer: Keep in mid that a jupyter notebook is a finished job, 
@@ -296,24 +297,25 @@ This analysis will compare the performance and distribution of genres between mo
 
 ```python
 df['genre_count'] = df['genres'].fillna('No info').str.split(',').apply(len)
-
-df['single_or_multiple'] = df['genre_count'].apply(lambda x: 'Single' if x == 1 else 'Multiples Genres')
+df['single_or_multiple'] = df['genre_count'].apply(lambda x: 'Single' if x == 1 else 'Multiple')
 
 imdb_performance = df.groupby('single_or_multiple')['imdbAverageRating'].mean().reset_index()
 
-fig, ax = plt.subplots(figsize=(3,3))
+fig, ax = plt.subplots(figsize=(4, 3))
 ax.bar(imdb_performance['single_or_multiple'], imdb_performance['imdbAverageRating'], color=['#b20710', '#221f1f'])
 
-ax.set_title('IMDb Performance: Single vs. Multiple Genres', fontsize=10, fontweight='bold', fontfamily='serif')
+ax.set_title('IMDb Performance: Single vs. Multiple Genres', fontsize=8, fontweight='bold', fontfamily='serif')
 ax.set_xlabel('Genre Type', fontsize=8, fontfamily='serif')
 ax.set_ylabel('Average IMDb Rating', fontsize=8, fontfamily='serif')
+ax.grid(axis='y', linestyle='--', alpha=0.7)
 
 for i in range(len(imdb_performance)):
-    ax.text(i, imdb_performance['imdbAverageRating'][i] - 0.5, f"{imdb_performance['imdbAverageRating'][i]:.2f}",
-             ha='center', fontsize=10, color='white',fontfamily='serif')
+    ax.text(i, imdb_performance['imdbAverageRating'][i] + 0.05, f"{imdb_performance['imdbAverageRating'][i]:.2f}", ha='center', fontsize=8, fontfamily='serif')
+
+plt.figtext(0.5, -0.1, 'Conclusion: Not a actionable insight for us.', wrap=True,
+             horizontalalignment='center', fontsize=8, fontfamily='serif')
 
 plt.show()
-
 
 ```
 
@@ -324,6 +326,202 @@ plt.show()
 
 
 
+#### 2. Summing Titles Across Multiple Genres
+
+
 ```python
+df['genres_split'] = df['genres'].fillna('No info').str.split(',')
+df_exploded = df.explode('genres_split')
+genre_counts = df_exploded['genres_split'].str.strip().value_counts().reset_index()
+genre_counts.columns = ['Genre', 'Count']
+
+# Sort by 'Count' and then select the top 10 genres
+genre_counts = genre_counts.sort_values(by=['Count'], ascending=False).head(10)
+
+fig, ax = plt.subplots(figsize=(4, 3))
+ax.barh(genre_counts['Genre'], genre_counts['Count'], color='#b20710')
+
+ax.set_title('Count of Titles by Genre', fontsize=8, fontweight='bold', fontfamily='serif')
+ax.set_xlabel('Count', fontsize=6, fontfamily='serif')
+ax.set_ylabel('Genre', fontsize=6, fontfamily='serif')
+ax.set_yticklabels(genre_counts['Genre'], fontsize=6)
+ax.set_xticklabels(genre_counts['Genre'], fontsize=6)
+ax.grid(axis='x', linestyle='--', alpha=0.7)
+
+for i in range(len(genre_counts)):
+    ax.text(genre_counts['Count'][i] + 10, i, f"{genre_counts['Count'][i]}", va='center', fontsize=8, fontfamily='serif')
+ax.set_xlim(0, genre_counts.iloc[0]['Count']*1.2)  
+plt.figtext(0.3, -0.1, 'Conclusion: Drama, Comedy and Action are \n the top 3 most common genres in netflix.', 
+            wrap=True, horizontalalignment='center', fontsize=8, fontfamily='serif')
+
+plt.show()
 
 ```
+
+
+    
+![png](output_15_0.png)
+    
+
+
+
+#### 3. Primary Genre Analysis
+
+
+```python
+df['primary_genre'] = df['genres'].str.split(',').str[0]
+primary_genre_performance = df.groupby('primary_genre')['imdbAverageRating'].agg(['mean', 'count']).reset_index()
+primary_genre_performance.columns = ['Primary Genre', 'Average IMDb Rating', 'Count']
+
+# Remove null values
+primary_genre_performance = primary_genre_performance.dropna(subset=['Average IMDb Rating'])
+
+# Get the top 5 highest and lowest IMDb ratings
+top_5_highest = primary_genre_performance.nlargest(5, 'Average IMDb Rating')
+top_5_lowest = primary_genre_performance.nsmallest(5, 'Average IMDb Rating')
+
+# Plot for the top 5 highest rated genres
+fig, ax = plt.subplots(figsize=(4, 3))
+bars = ax.barh(top_5_highest['Primary Genre'], top_5_highest['Average IMDb Rating'], color='#221f1f')
+
+ax.set_title('Top 5 Genres by IMDb Rating', fontsize=8, fontweight='bold', fontfamily='serif')
+ax.set_xlabel('Average IMDb Rating', fontsize=8, fontfamily='serif')
+ax.set_ylabel('Primary Genre', fontsize=8, fontfamily='serif')
+ax.grid(axis='x', linestyle='--', alpha=0.7)
+
+# Add values to the bars
+for bar, genre, avg_rating, count in zip(bars, top_5_highest['Primary Genre'], top_5_highest['Average IMDb Rating'], top_5_highest['Count']):
+    ax.text(bar.get_width() + 0.05, bar.get_y() + bar.get_height() / 2,
+            f'{avg_rating:.2f} | {count}', va='center', fontsize=8, fontfamily='serif')
+ax.set_xlim(0, 10)
+plt.figtext(0.5, -0.1, 'Conclusion: The top 5 genres by average IMDb rating are either real stories or animations (avg rating | count).', wrap=True, horizontalalignment='center', fontsize=8, fontfamily='serif')
+plt.show()
+
+# Plot for the bottom 5 lowest rated genres
+fig, ax = plt.subplots(figsize=(4, 3))
+bars = ax.barh(top_5_lowest['Primary Genre'], top_5_lowest['Average IMDb Rating'], color='#221f1f')
+
+ax.set_title('Bottom 5 Genres by IMDb Rating', fontsize=8, fontweight='bold', fontfamily='serif')
+ax.set_xlabel('Average IMDb Rating', fontsize=8, fontfamily='serif')
+ax.set_ylabel('Primary Genre', fontsize=8, fontfamily='serif')
+ax.grid(axis='x', linestyle='--', alpha=0.7)
+ax.set_xlim(0, 10)
+# Add values to the bars
+for bar, genre, avg_rating, count in zip(bars, top_5_lowest['Primary Genre'], top_5_lowest['Average IMDb Rating'], top_5_lowest['Count']):
+    ax.text(bar.get_width() + 0.05, bar.get_y() + bar.get_height() / 2,
+            f'{avg_rating:.2f} | {count}', va='center', fontsize=8, fontfamily='serif')
+
+plt.figtext(0.5, -0.1, 'Conclusion: The bottom 5 genres by average IMDb rating are creative content.', wrap=True, horizontalalignment='center', fontsize=8, fontfamily='serif')
+plt.show()
+
+```
+
+
+    
+![png](output_17_0.png)
+    
+
+
+
+    
+![png](output_17_1.png)
+    
+
+
+
+#### 4. Changes Over the Years
+
+
+```python
+# Calcular os 10 principais gêneros por contagem
+genre_counts = df['genres'].value_counts()
+top_genres = genre_counts.nlargest(10).index.tolist()
+
+# Substituir gêneros que não estão entre os 5 primeiros por "Others"
+df2= df[df['genres'].isin(top_genres)]
+# Recalcular as contagens de gêneros, incluindo "Others"
+genre_year_counts = df2.groupby(['releaseYearGroup', 'genres']).size().unstack(fill_value=0)
+
+# Converter contagens em porcentagens
+genre_year_percent = genre_year_counts.div(genre_year_counts.sum(axis=1), axis=0) * 100
+
+# Plotar os dados
+fig, ax = plt.subplots(figsize=(10, 6))
+genre_year_percent.plot(kind='bar', stacked=True, ax=ax, color=plt.cm.Paired(np.arange(len(genre_year_percent.columns))))
+
+ax.set_title('Percentage of Titles by Genre and Release Year Group', fontsize=10, fontweight='bold', fontfamily='serif')
+ax.set_xlabel('Release Year Group', fontsize=10, fontfamily='serif')
+ax.set_ylabel('Percentage', fontsize=10, fontfamily='serif')
+ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+# Adicionar rótulos de porcentagem às barras
+for i, bar in enumerate(ax.containers):
+    ax.bar_label(bar, fmt='%.1f%%', label_type='center', fontsize=8, fontfamily='serif')
+
+# Remover a caixa de legenda de dentro do gráfico e colocar ao lado direito
+ax.legend(title='Genres', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8, title_fontsize='10', frameon=False)
+
+plt.figtext(0.5, -0.1, 'Conclusion: The decrease in comedy and increase in documentaries are huge differences of \n what the average people consume in ~2000s and >2020', wrap=True, horizontalalignment='center', fontsize=10, fontfamily='serif')
+
+plt.show()
+
+```
+
+
+    
+![png](output_19_0.png)
+    
+
+
+
+#### 5. Changes Between Movies and TV Shows
+
+
+```python
+movie_tv_performance = df2.groupby(['type', 'genres'])['imdbAverageRating'].mean().unstack().fillna(0)
+
+fig, ax = plt.subplots(figsize=(12, 8))  # Further increase the size of the figure
+movie_tv_performance.plot(kind='bar', stacked=False, ax=ax, color=plt.cm.Paired(np.arange(len(movie_tv_performance.columns))))
+
+ax.set_title('Average IMDb Rating by Genre for Movies and TV Shows', fontsize=12, fontweight='bold', fontfamily='serif')
+ax.set_xlabel('Type', fontsize=12, fontfamily='serif')
+ax.set_ylabel('Average IMDb Rating', fontsize=12, fontfamily='serif')
+ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+# Add legend
+ax.legend(title='Genres', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=10, title_fontsize='12', frameon=False)
+
+# Add labels to the bars
+for container in ax.containers:
+    ax.bar_label(container, fmt='%.1f', label_type='edge', fontsize=10, fontfamily='serif')
+
+plt.figtext(0.5, -0.1, 'Conclusion: Movies have a higher IMDb rating than tv shows in every top 10 genres.', wrap=True, horizontalalignment='center', fontsize=10, fontfamily='serif')
+
+plt.show()
+
+```
+
+
+    
+![png](output_21_0.png)
+    
+
+
+## Other Possibilities (may add in future)
+
+- **Scatter Plots**: Analyze relationships between variables.
+- **Box Plots**: Visualize data distribution and outliers.
+- **Heatmaps**: Show correlations and patterns.
+- **Line Charts**: Trend analysis over time.
+- **Word Clouds**: Text data visualization.
+
+### Visualization Tools
+
+- **Tableau**: Interactive dashboards, multiple data sources.
+- **Amazon QuickSight**: Real-time analysis, scalable.
+- **Microsoft Power BI**: Detailed reports, data integration.
+
+### Conclusion
+
+Using various visualizations and tools like Tableau, QuickSight, and Power BI can enhance data analysis and presentation.
+

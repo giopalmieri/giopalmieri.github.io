@@ -19,8 +19,8 @@ nav-menu: true
 <!-- Two -->
 <section id="two" class="spotlights">
     <section>
-        <a href="_notebooks/dataviz.html" class="image">
-            <img src="{% link assets/images/pic11.jpg %}" alt="Data Visualization" data-position="top center" />
+        <a href="_notebooks/dataviz/index.html" class="image">
+            <img src="{% link assets/images/dataviz01.png %}" alt="Data Visualization" data-position="top center" />
         </a>
         <div class="content">
             <div class="inner">

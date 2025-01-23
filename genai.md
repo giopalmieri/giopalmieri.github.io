@@ -1,7 +1,7 @@
 ---
-title: AI Projects (landing)
-layout: landing
-description: 'Lorem ipsum dolor sit amet nullam consequa<br />sed veroeros. tempus adipiscing nulla.'
+title: Gen-AI Projects
+layout: page
+description: 
 image: assets/images/pic07.jpg
 nav-menu: true
 ---
