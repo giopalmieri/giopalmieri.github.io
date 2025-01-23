@@ -7,12 +7,12 @@ nav-menu: true
 
 <style>
     body {
-        font-size: 40px;
+        font-size: 20px;
     }
 
     @media (max-width: 768px) {
         body {
-            font-size: 44px; /* Aumenta o tamanho da fonte em dispositivos menores */
+            font-size: 24px; /* Aumenta o tamanho da fonte em dispositivos menores */
         }
     }
 </style>
