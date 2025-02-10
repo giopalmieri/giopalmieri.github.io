@@ -19,7 +19,7 @@ nav-menu: true
 <!-- Two -->
 <section id="two" class="spotlights">
     <section>
-        <a href="_notebooks/toodlers_books_generator/index.html" class="image">
+        <a href="_notebooks/toddlers_books_generator/index.html" class="image">
             <img src="{% link _notebooks/toddlers_books_generator/output_12_0.png %}" alt="Books Generator (for toddlers)" data-position="top center" />
         </a>
         <div class="content">

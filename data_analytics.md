@@ -29,7 +29,23 @@ nav-menu: true
                 </header>
                 <p>A jupyter notebook that contains data viz about the netflix movies dataset, one of multiples approachs to data visualization.</p>
                 <ul class="actions">
-                    <li><a href="data_visualization.html" class="button">Learn more</a></li>
+                    <li><a href="_notebooks/dataviz/index.html" class="button">Learn more</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+        <a href="_notebooks/fast-search-pandas/index.html" class="image">
+            <img src="{% link assets/images/pandas.jpg %}" alt="Data Search" data-position="center center" />
+        </a>
+        <div class="content">
+            <div class="inner">
+                <header class="major">
+                    <h3>Data Search in Pandas</h3>
+                </header>
+                <p>Increasing speed in search on pandas.</p>
+                 <ul class="actions">
+                    <li><a href="_notebooks/fast-search-pandas/index.html" class="button">Learn more</a></li>
                 </ul>
             </div>
         </div>

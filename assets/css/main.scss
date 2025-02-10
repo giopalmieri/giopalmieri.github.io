@@ -8,73 +8,157 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic');
 
 /*
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Forty by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-	@include skel-breakpoints((
-		xlarge: '(max-width: 1680px)',
-		large: '(max-width: 1280px)',
-		medium: '(max-width: 980px)',
-		small: '(max-width: 736px)',
-		xsmall: '(max-width: 480px)',
-		xxsmall: '(max-width: 360px)'
-	));
+    @include skel-breakpoints((
+        xlarge: '(max-width: 1680px)',
+        large: '(max-width: 1280px)',
+        medium: '(max-width: 980px)',
+        small: '(max-width: 736px)',
+        xsmall: '(max-width: 480px)',
+        xxsmall: '(max-width: 360px)'
+    ));
 
-	@include skel-layout((
-		reset: 'full',
-		boxModel: 'border',
-		grid: ( gutters: 2em ),
-		breakpoints: (
-			large: (
-				grid: ( gutters: 1.5em )
-			),
-			small: (
-				grid: ( gutters: 1.25em )
-			)
-		)
-	));
+    @include skel-layout((
+        reset: 'full',
+        boxModel: 'border',
+        grid: ( gutters: 2em ),
+        breakpoints: (
+            large: (
+                grid: ( gutters: 1.5em )
+            ),
+            small: (
+                grid: ( gutters: 1.25em )
+            )
+        )
+    ));
 
-	@mixin inner {
-		> .inner {
-			@include padding(4em, 0);
-			margin: 0 auto;
-			max-width: _size(inner);
-			width: calc(100% - 6em);
+    @mixin inner {
+        > .inner {
+            @include padding(4em, 0);
+            margin: 0 auto;
+            max-width: _size(inner);
+            width: calc(100% - 6em);
 
-			@include breakpoint(small) {
-				@include padding(3em, 0);
-				width: calc(100% - 3em);
-			}
-		}
-	}
+            @include breakpoint(small) {
+                @include padding(3em, 0);
+                width: calc(100% - 3em);
+            }
+        }
+    }
 
 // Base.
 
-	@import 'base/page';
-	@import 'base/typography';
+    @import 'base/page';
+    @import 'base/typography';
 
 // Component.
 
-	@import 'components/section';
-	@import 'components/form';
-	@import 'components/box';
-	@import 'components/icon';
-	@import 'components/image';
-	@import 'components/list';
-	@import 'components/table';
-	@import 'components/button';
-	@import 'components/tiles';
-	@import 'components/contact-method';
-	@import 'components/spotlights';
+    @import 'components/section';
+    @import 'components/form';
+    @import 'components/box';
+    @import 'components/icon';
+    @import 'components/image';
+    @import 'components/list';
+    @import 'components/table';
+    @import 'components/button';
+    @import 'components/tiles';
+    @import 'components/contact-method';
+    @import 'components/spotlights';
 
 // Layout.
 
-	@import 'layout/header';
-	@import 'layout/banner';
-	@import 'layout/main';
-	@import 'layout/contact';
-	@import 'layout/footer';
-	@import 'layout/wrapper';
-	@import 'layout/menu';
+    @import 'layout/header';
+    @import 'layout/banner';
+    @import 'layout/main';
+    @import 'layout/contact';
+    @import 'layout/footer';
+    @import 'layout/wrapper';
+    @import 'layout/menu';
+
+	code[class*="language-"], pre[class*="language-"] {
+		font-size: 14px !important; /* Ajustar o tamanho da fonte */
+		line-height: 1.5;
+	}
+	
+	/* Ajuste da largura do box de código */
+	pre[class*="language-"] {
+		max-width: 90%;
+		overflow: auto;
+		padding: 10px;
+		background: #f6f8fa;
+		border-radius: 5px;
+	}
+	/* Estilo para blocos de código */
+pre {
+    background-color: #f6f8fa;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 100%;
+    overflow: auto;
+    font-size: 14px; /* Ajuste o tamanho da fonte conforme necessário */
+    line-height: 1.5;
+}
+
+/* Estilo para saída de célula do Jupyter Notebook */
+div.output {
+    background-color: #e9ecef;
+    border-left: 4px solid #007bff; /* Cor de destaque */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* Estilo para imagens dentro da saída */
+div.output img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+/* Estilo específico para a saída de texto */
+div.output pre {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px; /* Ajuste o tamanho da fonte conforme necessário */
+    line-height: 1.5;
+}
+
+
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+    /* Estilo ajustado para as tabelas */
+    .dataframe {
+        width: 100%;
+        max-width: 100%;
+        word-wrap: break-word;
+    }
+
+    .dataframe td, .dataframe th {
+        padding: 8px;
+        text-align: left;
+        font-size: 12px; /* Ajuste o tamanho da fonte conforme necessário */
+    }
+
+    .dataframe thead th {
+        font-weight: bold;
+    }
+
+
+
